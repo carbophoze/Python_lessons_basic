@@ -18,7 +18,7 @@ __author__ = 'Шкрет Павел Александрович'
 import math
 
 a = math.inf
-print ('a==a**2 ',a==a**2)
-print ('a==a*2 ',a==a*2)
-print ('a>999999 ',a>999999)
+print('a==a**2 ', a == a**2)
+print('a==a*2 ', a == a*2)
+print('a>999999 ', a > 999999)
 input('Press any key to exit')

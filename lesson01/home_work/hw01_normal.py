@@ -1,6 +1,6 @@
 
-__author__ = 'Ваши Ф.И.О.'
-
+__author__ = 'Шкрет Павел Александрович'
+import math
 # Задача-1: Дано произвольное целое число, вывести самую большую цифру этого числа.
 # Например, дается x = 58375.
 # Нужно вывести максимальную цифру в данном числе, т.е. 8.
@@ -9,6 +9,43 @@ __author__ = 'Ваши Ф.И.О.'
 # Подсказки:
 # * постарайтесь решить задачу с применением арифметики и цикла while;
 # * при желании и понимании решите задачу с применением цикла for.
+
+# int(input('Введите число: '))
+
+
+def main():
+    print("Задача 1")
+    # number = "12345678909876543210"
+    number = input('Введите число:')
+    print('Наибольшая цифра (матметод):', findmaxnum_bymath(int(number)))
+    print('Наибольшая цифра (методстрок):', findmaxnum_byord(number))
+    print("\nЗадача 2")
+    solve_squareequ()
+
+
+
+
+def findmaxnum_bymath(a) -> int:
+
+    divider = len(str(a)) - 1
+    maxnum = 0
+    while divider > -1:
+        if (a//(10 ** divider)) > maxnum:
+            maxnum = a//(10**divider)
+        # print(a // (10 ** divider), '    ', maxnum)
+        a = a % 10 ** divider
+        divider -= 1
+    return maxnum
+
+
+def findmaxnum_byord(a) -> str:
+    maxchar="0"
+    for char in a:
+        if ord(char) > ord(maxchar):
+            maxchar = char
+    return maxchar
+
+
 
 
 # Задача-2: Исходные значения двух переменных запросить у пользователя.
@@ -25,3 +62,26 @@ __author__ = 'Ваши Ф.И.О.'
 # Для вычисления квадратного корня воспользуйтесь функцией sqrt() модуля math:
 # import math
 # math.sqrt(4) - вычисляет корень числа 4
+
+
+def solve_squareequ():
+    print('Решение квадратного уравнения ax^2+bx+c=0')
+    a = 0
+    while a == 0:
+        a = int(input("Введите a<>0: "))
+    b = int(input("Введите b: "))
+    c = int(input("Введите c: "))
+    D = b**2 - 4 * a * c
+    if D < 0:
+        print("D < 0 Решений нет")
+    else:
+        print("Дискриминант =", D)
+        x1 = (math.sqrt(D) - b) / 2 * a
+        print("Квадратный корень X1 =", x1)
+        if D > 0:
+            x2 = (-math.sqrt(D) - b) / 2 * a
+            print("Квадратный корень X2 =", x2)
+        print("Уравнение решено")
+    return
+
+main()
