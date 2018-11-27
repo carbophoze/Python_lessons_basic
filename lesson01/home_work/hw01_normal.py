@@ -14,12 +14,14 @@ import math
 
 
 def main():
-    print("Задача 1")
+    print("Задача 1. Поиск максимальной цифры в числе")
     # number = "12345678909876543210"
     number = input('Введите число:')
     print('Наибольшая цифра (матметод):', findmaxnum_bymath(int(number)))
     print('Наибольшая цифра (методстрок):', findmaxnum_byord(number))
-    print("\nЗадача 2")
+    print("\nЗадача 2. Обмен значениями двух переменных")
+    var2_changeval()
+    print("\nЗадача 3. Решение квадратного уравнения")
     solve_squareequ()
 
 
@@ -56,6 +58,15 @@ def findmaxnum_byord(a) -> str:
 # * при желании и понимании воспользуйтесь синтаксисом кортежей Python.
 
 
+def var2_changeval():
+    a = int(input("Значение первой переменной: "))
+    b = int(input("Значение второй переменной: "))
+    a = a ^ b
+    b = b ^ a
+    a = a ^ b
+    print("a =", a, "\nb =", b)
+
+
 # Задача-3: Напишите программу, вычисляющую корни квадратного уравнения вида
 # ax² + bx + c = 0.
 # Коэффициенты уравнения вводятся пользователем.
@@ -65,10 +76,10 @@ def findmaxnum_byord(a) -> str:
 
 
 def solve_squareequ():
-    print('Решение квадратного уравнения ax^2+bx+c=0')
+    print('Решение квадратного уравнения ax²+bx+c=0')
     a = 0
     while a == 0:
-        a = int(input("Введите a<>0: "))
+        a = int(input("Введите `a` неравно 0: "))
     b = int(input("Введите b: "))
     c = int(input("Введите c: "))
     D = b**2 - 4 * a * c
