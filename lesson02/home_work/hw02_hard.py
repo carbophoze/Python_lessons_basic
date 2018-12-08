@@ -2,8 +2,21 @@
 # Определить координату y точки с заданной координатой x.
 
 equation = 'y = -12x + 11111140.2121'
+equation = 'y = 2x + 6.5'
 x = 2.5
+
 # вычислите и выведите y
+str_kx = ''
+form = equation.split(' ')
+print(form)
+for item in form[2]:
+    if item in '-0123456789.':
+        str_kx += str(item)
+float_kx = float(str_kx)
+float_b = float(form[4])
+y = float_kx * x + float_b
+print('Result = {0:3.5}'.format(y))
+# Result = 11.5
 
 
 # Задание-2: Дата задана в виде строки формата 'dd.mm.yyyy'.
@@ -16,14 +29,38 @@ x = 2.5
 # 4. Длина исходной строки для частей должна быть в соответствии с форматом 
 #  (т.е. 2 символа для дня, 2 - для месяца, 4 - для года)
 
+print('\n')
+
+
+def test_date(indate) -> bool:
+    if len(indate) < 10:
+        return False
+    res = True
+    idate = indate.split('.')
+    if int(idate[2]) in range(1, 9999):
+        if int(idate[1]) in range(1, 12):
+            if int(idate[1]) % 2 == 0:
+                if int(idate[0]) not in range(1, 30):
+                    res = False
+            elif int(idate[0]) not in range(1, 31):
+                res = False
+        else:
+            res = False
+    else:
+        res = False
+    return res
+
+
 # Пример корректной даты
 date = '01.11.1985'
-
+print("{1} is {2}", date, test_date(date))
 # Примеры некорректных дат
 date = '01.22.1001'
+print("{1} is {2}", date, test_date(date))
 date = '1.12.1001'
+print("{1} is {2}", date, test_date(date))
 date = '-2.10.3001'
-
+print("{1} is {2}", date, test_date(date))
 
 # Задание-3: "Перевёрнутая башня" (Задача олимпиадного уровня)
 #
